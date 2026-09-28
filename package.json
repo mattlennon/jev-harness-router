@@ -1,0 +1,90 @@
+{
+  "name": "jev-harness-router",
+  "version": "0.2.1",
+  "private": true,
+  "type": "module",
+  "description": "Budget-aware Jev routing plugin for DeepSeek Harness",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "exports": {
+    ".": "./dist/src/index.js",
+    "./plugin": "./dist/src/harness/plugin.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test dist/test/*.test.js",
+    "demo": "npm run build && node dist/src/cli.js demo",
+    "doctor": "npm run build && node dist/src/cli.js doctor",
+    "eval": "npm run build && node dist/src/cli.js eval",
+    "smoke": "npm run build && node dist/src/cli.js smoke",
+    "prepack": "npm run build",
+    "check:repo": "node tools/check-repository.mjs",
+    "check:package": "node tools/check-package.mjs"
+  },
+  "dependencies": {
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@deepseek-ai/dsh-agent-loop": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-session-projection": "0.1.7-rc.2",
+    "@types/node": "24.10.0",
+    "typescript": "5.9.3",
+    "@deepseek-ai/cordis": "4.0.4",
+    "@deepseek-ai/dsh-agent": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-llm": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-session": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-system-prompt": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-tools": "0.1.7-rc.2"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "files": [
+    "dist/src",
+    "cordis.patch.yml",
+    "config/router.example.json",
+    "config/router.reasoning.example.json",
+    "README.md",
+    "docs",
+    "SOURCE_LOCK.json",
+    "src",
+    "test",
+    "examples",
+    "tools",
+    "tsconfig.json",
+    ".env.example",
+    "config/receipt.example.json",
+    "LICENSE",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
+    "artifacts/README.md"
+  ],
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "4.0.4",
+    "@deepseek-ai/dsh-agent": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-llm": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-session": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-system-prompt": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-tools": "0.1.7-rc.2"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattlennon/jev-harness-router.git"
+  },
+  "homepage": "https://github.com/mattlennon/jev-harness-router#readme",
+  "bugs": {
+    "url": "https://github.com/mattlennon/jev-harness-router/issues"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh-plugin",
+    "jev",
+    "llm-router",
+    "sse"
+  ]
+}

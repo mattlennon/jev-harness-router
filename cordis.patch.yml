@@ -1,0 +1,7 @@
+# Installable Harness bundle. Keep settings and the ledger outside the package.
+- insert:
+    - id: jev-router
+      name: jev-harness-router/plugin
+      config:
+        routerConfigFile: !!js process.env.JEV_ROUTER_CONFIG || dshHomePath('jev-router/router.json')
+        databaseFile: !!js process.env.JEV_ROUTER_DATABASE || dshHomePath('jev-router/ledger.sqlite')

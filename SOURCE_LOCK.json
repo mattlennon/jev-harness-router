@@ -1,0 +1,13 @@
+{
+  "verifiedDate": "2026-09-28",
+  "harnessRepository": "https://github.com/deepseek-ai/deepseek-harness",
+  "harnessCommit": "477b4f420553e8a52c2fbccc464d7561b239c443",
+  "harnessTag": "dsh-v0.1.7-rc.2",
+  "harnessNpmVersion": "0.1.7-rc.2",
+  "cordisNpmVersion": "4.0.4",
+  "npmDistTagsObserved": { "latest": "0.1.0-rc.6", "next": "0.1.7-rc.2", "alpha": "0.1.7-alpha.2" },
+  "cliInstallRecheck": { "date": "2026-09-28", "package": "@deepseek-ai/dsh", "latest": "0.1.7-rc.2", "next": "0.1.7-rc.2" },
+  "jevTemplateModel": "jev-1.13.0",
+  "dependencyAuthority": "package-lock.json",
+  "notes": "Latest published Harness release, including prereleases, verified on 2026-09-28. CLI latest tag now also points to the pinned version. v0.2.1 bundle verified in the full installed Web profile, including shared Cordis and provider registration. SSE and reasoning contracts tested locally. Real provider calls and live prices not verified."
+}

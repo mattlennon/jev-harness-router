@@ -1,0 +1,17 @@
+export { RouterEngine } from './engine.js';
+export { Store } from './storage.js';
+export { parseConfig, configSchema } from './config.js';
+export { decide, candidates, needsEscalation } from './policy.js';
+export { GuardedChatAdapter } from './harness/adapter.js';
+export { RouterError } from './domain.js';
+export { providers } from './providers.js';
+export { configurationTemplate } from './template.js';
+export { runEvaluation } from './evaluation.js';
+export type { TaskExecutor, EvaluationTask, ExecutionResult, Group } from './evaluation.js';
+export type { RouterConfig, Route } from './config.js';
+export type { Decision, TaskState, Evidence, Judgment, Budget } from './domain.js';
+export { prepareWire } from './wire.js';
+export { planRoute } from './planner.js';
+export { compactToolResults, checkpoint } from './harness/context.js';
+export type { Checkpoint } from './harness/context.js';
+export type { Attempt } from './telemetry.js';

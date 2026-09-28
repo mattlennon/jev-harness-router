@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+import { join } from 'node:path';
+const root = fileURLToPath(new URL('../', import.meta.url));
+assert.ok(process.env.npm_execpath, 'Run with npm run check:package');
+const output = execFileSync(process.execPath, [process.env.npm_execpath, 'pack', '--dry-run', '--ignore-scripts', '--json', '--cache', join(root, 'node_modules/.cache/npm')], { cwd: root, encoding: 'utf8' });
+const [pack] = JSON.parse(output);
+const paths = pack.files.map(f => f.path);
+for (const required of ['dist/src/index.js', 'dist/src/harness/plugin.js', 'cordis.patch.yml', 'LICENSE', 'package.json']) assert.ok(paths.includes(required), `Missing package entry: ${required}`);
+for (const path of paths) assert.ok(!/(^|\/)(node_modules|\.git|\.upgrade-backup|data)\/|(^|\/)\.env$|\.local\.[^/]+$|\.sqlite/.test(path) && (!path.startsWith('artifacts/') || path === 'artifacts/README.md'), `Private/generated package entry: ${path}`);
+console.log(`Package check passed: ${pack.filename}, ${paths.length} files, ${pack.size} bytes.`);

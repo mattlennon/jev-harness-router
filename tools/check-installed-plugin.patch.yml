@@ -1,0 +1,3 @@
+- insert:
+    - id: jev-installation-check
+      name: './check-installed-plugin.mjs'

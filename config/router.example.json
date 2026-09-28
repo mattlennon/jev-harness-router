@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "policyVersion": "router-policy-v0.2",
+  "questionVersion": "routing-questions-v1",
+  "modelRegistryVersion": "unconfigured-v2",
+  "mode": "shadow",
+  "defaultRouteId": "deepseek-strong",
+  "calibrationReportId": null,
+  "supportedLanguages": [],
+  "jev": {
+    "endpoint": "https://api.typesafe.ai/v1/systemone",
+    "model": "jev-1.13.0",
+    "apiKeyEnv": "TYPESAFE_API_KEY",
+    "allowStateTransmission": false,
+    "timeoutMs": 800,
+    "maxAttempts": 1,
+    "maxStateBytes": 8000,
+    "maxInputTokens": 64000,
+    "inputPerMillionUsd": 0.042,
+    "circuitBreaker": {
+      "failuresToOpen": 5,
+      "openMs": 30000
+    }
+  },
+  "routing": {
+    "maxEscalations": 1,
+    "allowDowngradeWithinTask": false,
+    "taskKindConfidenceMin": 0.8,
+    "crossFileProbabilityMax": 0.2,
+    "informationSufficientProbabilityMin": 0.8,
+    "capabilityFailureThreshold": 2,
+    "maxTaskSteps": 20,
+    "maxAttemptsPerStep": 3
+  },
+  "budget": {
+    "currency": "USD",
+    "limitMicrousd": 2000000,
+    "retainUnknownReservations": true
+  },
+  "routes": [
+    {
+      "id": "deepseek-economy",
+      "vendor": "deepseek",
+      "tier": "economy",
+      "provider": "jev-router-deepseek-economy",
+      "model": "REPLACE_WITH_DEEPSEEK_MODEL_ID",
+      "endpoint": "https://api.deepseek.com/chat/completions",
+      "apiKeyEnv": "DEEPSEEK_API_KEY",
+      "ready": false,
+      "timeoutMs": 120000,
+      "transport": "sse",
+      "requestOptions": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "capabilities": {
+        "tools": true,
+        "inputModalities": [
+          "text"
+        ],
+        "contextWindow": 8192,
+        "maxOutputTokens": 512,
+        "historyCompatibilityGroup": "chat-completions-text-tools-v1",
+        "compatibleFrom": [],
+        "verifiedAt": null,
+        "outputIncludesReasoning": false
+      },
+      "pricing": {
+        "currency": "USD",
+        "inputPerMillionUsd": 0,
+        "outputPerMillionUsd": 0,
+        "priceVersion": "UNVERIFIED-FILL-REAL-USD-PRICES"
+      }
+    },
+    {
+      "id": "deepseek-strong",
+      "vendor": "deepseek",
+      "tier": "strong",
+      "provider": "jev-router-deepseek-strong",
+      "model": "REPLACE_WITH_DEEPSEEK_MODEL_ID",
+      "endpoint": "https://api.deepseek.com/chat/completions",
+      "apiKeyEnv": "DEEPSEEK_API_KEY",
+      "ready": false,
+      "timeoutMs": 120000,
+      "transport": "sse",
+      "requestOptions": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "capabilities": {
+        "tools": true,
+        "inputModalities": [
+          "text"
+        ],
+        "contextWindow": 8192,
+        "maxOutputTokens": 512,
+        "historyCompatibilityGroup": "chat-completions-text-tools-v1",
+        "compatibleFrom": [],
+        "verifiedAt": null,
+        "outputIncludesReasoning": false
+      },
+      "pricing": {
+        "currency": "USD",
+        "inputPerMillionUsd": 0,
+        "outputPerMillionUsd": 0,
+        "priceVersion": "UNVERIFIED-FILL-REAL-USD-PRICES"
+      }
+    },
+    {
+      "id": "kimi-strong",
+      "vendor": "kimi",
+      "tier": "strong",
+      "provider": "jev-router-kimi-strong",
+      "model": "REPLACE_WITH_KIMI_MODEL_ID",
+      "endpoint": "https://api.moonshot.cn/v1/chat/completions",
+      "apiKeyEnv": "KIMI_API_KEY",
+      "ready": false,
+      "timeoutMs": 120000,
+      "transport": "sse",
+      "requestOptions": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "capabilities": {
+        "tools": true,
+        "inputModalities": [
+          "text"
+        ],
+        "contextWindow": 8192,
+        "maxOutputTokens": 512,
+        "historyCompatibilityGroup": "chat-completions-text-tools-v1",
+        "compatibleFrom": [],
+        "verifiedAt": null,
+        "outputIncludesReasoning": false
+      },
+      "pricing": {
+        "currency": "USD",
+        "inputPerMillionUsd": 0,
+        "outputPerMillionUsd": 0,
+        "priceVersion": "UNVERIFIED-FILL-REAL-USD-PRICES"
+      }
+    },
+    {
+      "id": "zhipu-strong",
+      "vendor": "zhipu",
+      "tier": "strong",
+      "provider": "jev-router-zhipu-strong",
+      "model": "REPLACE_WITH_ZHIPU_MODEL_ID",
+      "endpoint": "https://open.bigmodel.cn/api/paas/v4/chat/completions",
+      "apiKeyEnv": "ZHIPU_API_KEY",
+      "ready": false,
+      "timeoutMs": 120000,
+      "transport": "sse",
+      "requestOptions": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "capabilities": {
+        "tools": true,
+        "inputModalities": [
+          "text"
+        ],
+        "contextWindow": 8192,
+        "maxOutputTokens": 512,
+        "historyCompatibilityGroup": "chat-completions-text-tools-v1",
+        "compatibleFrom": [],
+        "verifiedAt": null,
+        "outputIncludesReasoning": false
+      },
+      "pricing": {
+        "currency": "USD",
+        "inputPerMillionUsd": 0,
+        "outputPerMillionUsd": 0,
+        "priceVersion": "UNVERIFIED-FILL-REAL-USD-PRICES"
+      }
+    }
+  ],
+  "optimization": {
+    "costAware": false,
+    "minimumQuality": 0.9,
+    "switchMarginMicrousd": 1000,
+    "minResidenceSteps": 3,
+    "upgradeReserveMicrousd": 0,
+    "toolResultMaxChars": 8000,
+    "retainRecentToolResults": 2
+  }
+}
