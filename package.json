@@ -23,7 +23,7 @@
     "check:package": "node tools/check-package.mjs"
   },
   "dependencies": {
-    "zod": "4.4.3"
+    "zod": "4.6.5"
   },
   "devDependencies": {
     "@deepseek-ai/dsh-agent-loop": "0.1.7-rc.2",
